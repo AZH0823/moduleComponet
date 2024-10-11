@@ -1,8 +1,10 @@
 import { defineConfig } from 'unocss'
-
 export default defineConfig({
   // 自定義你的設置
   rules: [
+    ['primary-color', { color: 'var(--primary-color)' }],
+    ['background-color', { backgroundColor: 'var(--background-color)' }],
+    ['text-color', { color: 'var(--text-color)' }],
   ],
   shortcuts: [
     // 自定義快捷方式
@@ -100,7 +102,7 @@ export default defineConfig({
         'neutral-80': '#D9DADD',
         'neutral-90': '#F7F7F6',
         'neutral-100': '#FFFFFF',
-        'einsure-neutral-90': '#F4F5F8'
+        'einsure-neutral-90': '#F4F5F8',
     },
   },
 })

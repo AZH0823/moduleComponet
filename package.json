@@ -19,6 +19,8 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@unocss/nuxt": "^0.62.4",
+    "@vueuse/nuxt": "^11.1.0",
+    "nuxt-swiper": "^1.2.2",
     "sass": "^1.79.3"
   }
 }

@@ -1,30 +1,21 @@
 <script setup>
-import useHttp  from '~/composables/useHttp'
 import newsSection from '~/components/newsSection.vue';
-const fetchData = async () => {
-  try {
-    const domain = '/news/list'
-    const map = await useHttp.get(domain);
-    console.log(`page get data: `, map);
-  } catch (error) {
-    console.error(error);
-  }
-};
-onMounted(async()=>{
-  const domain = '/news/list'
-  data.value = await useHttp.get(domain);
-  console.log(`onMounted page get data: `, data.result);
+import bannerSection from '~/components/bannerSection.vue';
+import { usePageObject } from '~/composables/useIndex';
+import { watchEffect } from 'vue'
+const route = useRoute();
+const { pageObject, newsList } = await usePageObject(route); // 獲取響應式數據
+onMounted(()=>{
+  console.log(`index pageObject: `, pageObject, newsList)
 })
-
-const data = ref([])
-
 </script>
 
 <template>
   <div class="bg-w-ramp">
-    Page: 
-    <button @click="fetchData">click</button>
-    <newsSection :title="'最新消息'" :data="data"/>
+    <template v-if="pageObject && pageObject.bannerImage">
+      <banner-section :banner-image="pageObject.bannerImage || []" :critical="true" :is-home-page="true" />
+    </template>
+    <newsSection :title="'最新消息'" :data="newsList"/>
   </div>
 </template>
 

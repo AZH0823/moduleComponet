@@ -24,8 +24,22 @@ const handleError = (res)=>{
     console.log(`handleError: `, error)
   }
 }
+// GET方法傳遞參數
+const paramsSerializer = (params) => {
+  if (!params) { return }
+
+  const query = JSON.parse(JSON.stringify(params))
+  Object.entries(query).forEach(([key, val]) => {
+    if (typeof val === 'object' && Array.isArray(val) && val !== null) {
+      query[`${key}[]`] = toRaw(val).map((v) => JSON.stringify(v))
+      delete query[key]
+    }
+  })
+  return query
+}
 const request = async (method, url, { params = {}, body = {} } = {}, option = {}) => {
   try {
+    console.log(`init: `, method, url)
     const config = useRuntimeConfig();
     const apiBase = config.public.apiBase;
     console.log(`test: ${apiBase}${url}`)
@@ -42,7 +56,7 @@ const request = async (method, url, { params = {}, body = {} } = {}, option = {}
         // if (!userStore.isLogin) { return }
         // options.headers = new Headers(options.headers)
         // options.headers.set('Authorization', `Bearer ${userStore.authToken}`)
-        console.log('Request is about to be sent:', options);
+        // console.log('Request is about to be sent:', options);
       },
       // onRequestError：處理請求錯誤
       onRequestError({ request, options, error }) {
@@ -54,7 +68,6 @@ const request = async (method, url, { params = {}, body = {} } = {}, option = {}
         if (response.headers.get('content-disposition') && response.status === 200) { 
           return response
         } 
-        
         const errorStatus = [400, 401, 403, 404, 500]
         if (errorStatus.includes(response.status)) {
           console.log(`40系列觸發`)
@@ -75,19 +88,7 @@ const request = async (method, url, { params = {}, body = {} } = {}, option = {}
   } catch (err) {
   }
 };
-// GET方法傳遞參數
-const paramsSerializer = (params) => {
-  if (!params) { return }
 
-  const query = JSON.parse(JSON.stringify(params))
-  Object.entries(query).forEach(([key, val]) => {
-    if (typeof val === 'object' && Array.isArray(val) && val !== null) {
-      query[`${key}[]`] = toRaw(val).map((v) => JSON.stringify(v))
-      delete query[key]
-    }
-  })
-  return query
-}
 
 // HTTP 方法封裝
 const get = (url, params = {}, option = {}) => request('GET', url, { params }, option);

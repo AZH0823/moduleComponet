@@ -1,2 +1,9 @@
 @import '@unocss/reset/normalize.css';
 @import '_reset.scss';
+
+.text-primary{
+  color: var(--textPrimary);
+}
+.background{
+  background: var(--background);
+}

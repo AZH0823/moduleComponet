@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   // '@nuxtjs/tailwindcss',
-  modules: ['@unocss/nuxt'],
+  modules: ['@unocss/nuxt', '@vueuse/nuxt', 'nuxt-swiper'],
   css:[
     '~/assets/style/main.scss'
   ],
