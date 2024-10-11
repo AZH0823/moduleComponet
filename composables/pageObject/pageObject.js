@@ -15,7 +15,7 @@ export const fetchPageObject = async (route) => {
 
   try {
     const { data: pageObject } = await useAsyncData('pageObject', async () => {
-      const res = await useHttp.post('/page', { route: route.path });
+      const res = await useHttp.post('/page', { route });
       console.log(`await usehttp:`, res)
       return res
     })

@@ -1,10 +1,21 @@
 <script setup>
-// import newsSection from '~/components/newsSection.vue';
+import newsSection from '~/components/newsSection.vue';
+import bannerSection from '~/components/bannerSection.vue';
+import { usePageObject } from '~/composables/useIndex';
+
+const route = useRoute();
+const { pageObject, newsList } = await usePageObject(route); // 獲取響應式數據
+onMounted(()=>{
+  console.log(`index pageObject: `, newsList)
+})
 </script>
 
 <template>
   <div class="bg-w-ramp">
-    <!-- <newsSection :title="'最新消息'" :data="data"/> -->
+    <template v-if="pageObject && pageObject.bannerImage">
+      <banner-section :banner-image="pageObject.bannerImage || []" :critical="true" :is-home-page="true" />
+    </template>
+    <newsSection :title="'最新消息'" :data="newsList"/>
   </div>
 </template>
 

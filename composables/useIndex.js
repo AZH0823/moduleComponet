@@ -10,7 +10,8 @@ export const usePageObject = async(route) => {
   const fetchData = async () => {
     try {
       // 獲取頁面對象
-      const res = await fetchPageObject(route)
+      const checkRoute = route.path.includes('moji') || route.path.includes('einsure') ? '/' : route.path 
+      const res = await fetchPageObject(checkRoute)
       pageObject.value = res // 將頁面對象存儲到響應式變數中
     } catch (err) {
       console.log(`fetchData err:`, err)

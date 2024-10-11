@@ -2,7 +2,6 @@
 import newsSection from '~/components/newsSection.vue';
 import bannerSection from '~/components/bannerSection.vue';
 import { usePageObject } from '~/composables/useIndex';
-import { watchEffect } from 'vue'
 const route = useRoute();
 const { pageObject, newsList } = await usePageObject(route); // 獲取響應式數據
 onMounted(()=>{
