@@ -4,9 +4,6 @@ import bannerSection from '~/components/bannerSection.vue';
 import { usePageObject } from '~/composables/useIndex';
 const route = useRoute();
 const { pageObject, newsList } = await usePageObject(route); // 獲取響應式數據
-onMounted(()=>{
-  console.log(`index pageObject: `, pageObject, newsList)
-})
 </script>
 
 <template>

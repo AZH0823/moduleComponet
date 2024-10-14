@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import swiper from '~/components/global/swiper.vue';
 
 const props = defineProps({
   bannerImage: {
@@ -11,14 +12,11 @@ const props = defineProps({
     default: false
   }
 })
-const bannerImages = computed(() => {
-  return props.bannerImage
-})
 </script>
 
 <template>
   <div>
-    Component: bannerSection <pre>{{ bannerImages }}</pre>
+    <swiper :bannerImage="bannerImage"/>
   </div>
 </template>
 

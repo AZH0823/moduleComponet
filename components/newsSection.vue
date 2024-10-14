@@ -22,7 +22,7 @@ const formattedDates = computed(() => {
 </script>
 
 <template>
-  <div id="news" class="bg-cover bg-white w-full flex flex-col text-center mx-auto">
+  <div id="news" class="bg-cover w-full flex flex-col text-center mx-auto">
     <span class="text-3xl text-text-dark mt-16 font-bold mx-auto">最新消息</span>
     <div
       class="
