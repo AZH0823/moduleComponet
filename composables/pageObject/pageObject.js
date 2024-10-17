@@ -16,10 +16,9 @@ export const fetchPageObject = async (route) => {
   try {
     const { data: pageObject } = await useAsyncData('pageObject', async () => {
       const res = await useHttp.post('/page', { route });
-      console.log(`await usehttp:`, res)
+      // console.log(`await usehttp:`, res)
       return res
     })
-    console.log(`covert pageobject before:`, pageObject)
     
     if (pageObject.value && pageObject.value.bannerImage) {
       pageObject.value.bannerImage = pageObject.value.bannerImage.map(e => ({
@@ -28,7 +27,7 @@ export const fetchPageObject = async (route) => {
         rwdAlt: getAlt(e.rwdSrc)
       }))
     }
-    console.log(`covert pageobject:`, pageObject)
+    // console.log(`covert pageobject:`, pageObject)
     return { ...pageObject.value } // 確保返回 pageObjectData 和 error
   } catch (error) {
     console.log(`err: `, error)

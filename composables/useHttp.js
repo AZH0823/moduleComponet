@@ -39,10 +39,9 @@ const paramsSerializer = (params) => {
 }
 const request = async (method, url, { params = {}, body = {} } = {}, option = {}) => {
   try {
-    console.log(`init: `, method, url)
+    // console.log(`init: `, method, url)
     const config = useRuntimeConfig();
     const apiBase = config.public.apiBase;
-    console.log(`test: ${apiBase}${url}`)
     const response = await $fetch(`${url}`, {
       method,
       params: method === 'GET' || method === 'DELETE' ? params : undefined,  // 只在 GET 和 DELETE 中使用 params

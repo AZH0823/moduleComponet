@@ -1,7 +1,6 @@
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { EffectFade,Pagination } from 'swiper/modules';
-import 'swiper/css/effect-fade';
 const modules = [Pagination, EffectFade];
 const props = defineProps({
   bannerImage: {
@@ -23,18 +22,17 @@ const props = defineProps({
 })
 
 const slides = props.bannerImage
-console.log(slides)
 const onSwiper = (swiper) => {
-  console.log(`init: `, swiper);
+  // console.log(`init: `, swiper);
 };
 
 const onSlideChange = () => {
-  console.log('slide change');
+  // console.log('slide change');
 };
 </script>
 <template>
   <div class="swiper-container loadingHome">
-    <Swiper
+    <swiper
       :modules="modules"
       :slides-per-view="1"
       class="swiper productSwiper"
@@ -64,7 +62,7 @@ const onSlideChange = () => {
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
-      <SwiperSlide v-for="(slide, index) in slides" :key="index">
+      <swiper-slide v-for="(slide, index) in slides" :key="index">
         <nuxt-img
           :src="slide.src"
           :alt="slide?.alt || '輪播圖片'"
@@ -74,11 +72,10 @@ const onSlideChange = () => {
           :loading="index === 0 ? 'eager' : 'lazy'"
           :preload="index === 0"
           placeholder="/webBannerBG_1920_600.webp"
-          format="webp" 
-          native
-          />
-      </SwiperSlide>
-    </Swiper>
+          format="webp"
+        />
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 

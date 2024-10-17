@@ -14,7 +14,7 @@ export const usePageObject = async(route) => {
       const res = await fetchPageObject(checkRoute)
       pageObject.value = res // 將頁面對象存儲到響應式變數中
     } catch (err) {
-      console.log(`fetchData err:`, err)
+      // console.log(`fetchData err:`, err)
     }
   }
 

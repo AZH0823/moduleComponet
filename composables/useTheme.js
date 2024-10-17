@@ -52,7 +52,7 @@ export const useThemeWatcher = () => {
   watch(
     () => route.path,
     (newPath) => {
-      console.log(`New path: `, newPath); // 檢查路由變化
+      // console.log(`New path: `, newPath); // 檢查路由變化
       if (newPath.includes('einsure')) {
         themeClass.value = 'einsure'
       } else if (newPath.includes('moji')) {

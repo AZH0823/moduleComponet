@@ -1,6 +1,6 @@
 <script setup>
-import newsSection from '~/components/newsSection.vue';
-import bannerSection from '~/components/bannerSection.vue';
+import bannerSection from '~/components/home/bannerSection.vue';
+import newsSection from '~/components/home/newsSection.vue';
 import { usePageObject } from '~/composables/useIndex';
 
 const route = useRoute();

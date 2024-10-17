@@ -1,7 +1,6 @@
 import Swal from 'sweetalert2'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  console.log(`sweer : `, nuxtApp)
   const warning = (msg, detail) => {
     Swal.fire({
       title: msg,

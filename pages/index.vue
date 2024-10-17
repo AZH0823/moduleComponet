@@ -1,22 +1,21 @@
 <script setup>
-import newsSection from '~/components/newsSection.vue';
-import bannerSection from '~/components/bannerSection.vue';
+import bannerSection from '~/components/home/bannerSection.vue';
+import selectbarSection from '~/components/home/selectbarSection.vue';
+import featureSection from '~/components/home/featureSection.vue';
+import newsSection from '~/components/home/newsSection.vue';
 import { usePageObject } from '~/composables/useIndex';
 const route = useRoute();
 const { pageObject, newsList } = await usePageObject(route); // 獲取響應式數據
 </script>
 
 <template>
-  <div class="bg-w-ramp">
-    <template v-if="pageObject && pageObject.bannerImage">
-      <banner-section :banner-image="pageObject.bannerImage || []" :critical="true" :is-home-page="true" />
-    </template>
+  <div>
+    <bannerSection :banner-image="pageObject.bannerImage || []" :critical="true" :is-home-page="true" />
+    <selectbarSection />
+    <featureSection :h1="pageObject.h1" />
     <newsSection :title="'最新消息'" :data="newsList"/>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.bg-w-ramp{
-  background: linear-gradient(0deg, var(--white), var(--white));
-}
 </style>

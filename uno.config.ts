@@ -7,11 +7,9 @@ export default defineConfig({
     ['text-color', { color: 'var(--text-color)' }],
   ],
   shortcuts: [
-    // 自定義快捷方式
     ['btn', 'px-4 py-1 rounded inline-block bg-blue-600 text-white cursor-pointer hover:bg-blue-700'],
   ],
   theme: {
-    // 自定義主題
     colors: {
       'einsure-dark': '#11676C',
         // eslint-disable-next-line quote-props
@@ -103,6 +101,17 @@ export default defineConfig({
         'neutral-90': '#F7F7F6',
         'neutral-100': '#FFFFFF',
         'einsure-neutral-90': '#F4F5F8',
+    },
+    screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      'min-1400': { min: '1400px' },
+      'min-1000': { min: '1000px' },
+      'max-999': { max: '999px' },
+      'min-567': { min: '567px' },
     },
   },
 })

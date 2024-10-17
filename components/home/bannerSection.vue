@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import swiper from '~/components/global/swiper.vue';
+import swiper from '@/components/global/swiper.vue';
 
-const props = defineProps({
+defineProps({
   bannerImage: {
     type: Array,
     default: () => []
@@ -15,7 +15,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <div  v-if="bannerImage">
     <swiper :bannerImage="bannerImage"/>
   </div>
 </template>
